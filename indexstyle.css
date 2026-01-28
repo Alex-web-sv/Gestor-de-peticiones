@@ -1,0 +1,178 @@
+
+/* 1. Reset de estilos básicos */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex; /* Esto pone el panel blanco y el azul uno al lado del otro */
+    height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+/* 2. Sección del Formulario (Izquierda) */
+.login-section {
+    flex: 1; /* Toma el 45% del ancho aproximadamente */
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.logo-top {
+    color: #1a3668; /* Azul oscuro */
+    font-weight: bold;
+    font-size: 28px;
+    border-bottom: 4px solid #f27444; /* Línea naranja */
+    margin-bottom: 30px;
+    padding-bottom: 5px;
+}
+
+/* El cuadro con borde naranja */
+.login-card {
+    border: 3px solid #f27444; 
+    border-radius: 40px;
+    padding: 30px 20px;
+    width: 320px;
+    text-align: center;
+}
+
+.login-card h2 {
+    color: #1a3668;
+    font-size: 18px;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+.login-card p {
+    color: #1a3668;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+/* 3. Estilos de los inputs (Ovalados) */
+.input-field {
+    width: 85%;
+    padding: 12px 20px;
+    margin: 10px 0;
+    border: 2px solid #1a3668; /* Borde azul */
+    border-radius: 25px; /* Hace que sean ovalados */
+    text-align: center;
+    font-weight: bold;
+    color: #1a3668;
+    outline: none;
+}
+
+.input-field::placeholder {
+    color: #79808b;
+}
+
+/* 4. Botón e hipervínculo */
+.btn-login {
+    width: 85%;
+    padding: 12px;
+    background-color: #f27444; /* Naranja Construrama */
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    text-transform: uppercase;
+    transition: background 0.3s;
+}
+
+.btn-login:hover {
+    background-color: #d65d30;
+}
+
+.forgot-password {
+    display: block;
+    margin-top: 20px;
+    color: #1a3668;
+    font-size: 12px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* 5. Sección Azul (Derecha) */
+.brand-section {
+    flex: 1.2; /* Es un poco más ancha que la blanca */
+    background-color: #9bb7d9; /* Azul claro del fondo */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgb(40, 53, 122);
+}
+
+.brand-section h1 {
+    font-size: 36px;
+    margin-bottom: 50px;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.main-logo-img {
+    max-width: 350px; /* Ajusta según el tamaño de tu imagen de la palustre */
+}
+
+/* 6. Copyright inferior */
+.footer-text {
+    position: absolute;   /* Se posiciona respecto a la sección blanca */
+    bottom: 30px;         /* Distancia desde el suelo de la pantalla */
+    left: 50%;            /* Lo mueve a la mitad de la pantalla */
+    transform: translateX(-50%); /* Lo centra exactamente sobre su propio eje */
+    
+    font-size: 11px;
+    color: #1a3668;       /* El azul oscuro de la empresa */
+    font-weight: bold;
+    text-align: center;
+    width: 100%;          /* Asegura que el área de texto cubra el ancho */
+}
+
+/* --- REEMPLAZA TU MEDIA QUERY ANTERIOR CON ESTA --- */
+
+@media (max-width: 768px) {
+    body {
+        /* Ya no necesitamos flex-direction porque una sección desaparecerá */
+        display: block; 
+        height: auto;
+    }
+
+    /* OCULTAMOS EL PANEL AZUL */
+    .brand-section {
+        display: none; /* Esto hace que la sección azul y la imagen no existan en celular */
+    }
+
+    /* AJUSTAMOS EL LOGIN PARA QUE SE VEA BIEN SOLO */
+    .login-section {
+        width: 100%;
+        min-height: 100vh;
+        padding: 40px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .login-card {
+        width: 100%;
+        max-width: 340px; /* Tamaño ideal para la mano en el celular */
+        border-radius: 30px;
+    }
+
+    /* Ajustamos el texto legal del pie de página */
+    .footer-text {
+        position: relative;
+        bottom: 0;
+        margin-top: 40px;
+        text-align: center;
+        left: 0;
+        width: 100%;
+    }
+}
