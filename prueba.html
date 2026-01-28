@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Interfaz Optimizada</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #BDBDBD;
+      height: 100vh;
+    }
+
+    .admin-box {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      width: 210px;
+      height: 60px;
+      background-color: #FF640C;
+      color: #fff;
+      font-size: 1.3em;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+    }
+
+    .dropdown-container {
+      position: fixed;
+      top: 80px;
+      left: 10px;
+      width: 200px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .dropdown button {
+      width: 100%;
+      height: 45px;
+      border: none;
+      border-radius: 10px;
+      background-color: #005CD9;
+      color: #fff;
+      font-size: 1.1em;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .dropdown-content {
+      display: none;
+      flex-direction: column;
+      background-color: #fff;
+      border-radius: 8px;
+      margin-top: 5px;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .dropdown-content a {
+      padding: 8px;
+      text-decoration: none;
+      color: #000;
+      font-size: 0.95em;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .dropdown-content a:last-child {
+      border-bottom: none;
+    }
+
+    .btn-right {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      width: 150px;
+      height: 48px;
+      border: none;
+      border-radius: 8px;
+      background-color: #FF640C;
+      color: #fff;
+      font-size: 1.1em;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .btn-right:hover {
+      background-color: #e55a0b;
+      transform: scale(1.05);
+    }
+
+    .side-panel-left,
+    .side-panel-right {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      width: 220px;
+      background-color: #0053C2;
+    }
+
+    .side-panel-left { left: 0; }
+    .side-panel-right { right: 0; }
+
+    .content {
+      margin: 0 220px;
+      height: 100vh;
+      background-color: #BDBDBD;
+    }
+  </style>
+</head>
+<body>
+  <div class="side-panel-left"></div>
+  <div class="side-panel-right"></div>
+
+  <div class="admin-box">Panel administrador</div>
+
+  <div class="dropdown-container" id="dropdownContainer"></div>
+
+  <button class="btn-right" onclick="alert('Notificaciones')">
+    <i class="fas fa-bell"></i> Notificaciones
+  </button>
+
+  <div class="content"></div>
+  
+
+  <script>
+    // Generar dinámicamente los 10 dropdowns
+    const container = document.getElementById("dropdownContainer");
+
+    for (let i = 1; i <= 8; i++) {
+      const dropdown = document.createElement("div");
+      dropdown.className = "dropdown";
+
+      const button = document.createElement("button");
+      button.textContent = `Ejemplo ${i} ▼`;
+      button.onclick = () => {
+        const menu = dropdown.querySelector(".dropdown-content");
+        menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+      };
+
+      const content = document.createElement("div");
+      content.className = "dropdown-content";
+
+      for (let j = 1; j <= 5; j++) {
+        const item = document.createElement("a");
+        item.href = "#";
+        item.textContent = `Opcion ${j}`;
+        content.appendChild(item);
+      }
+
+      dropdown.appendChild(button);
+      dropdown.appendChild(content);
+      container.appendChild(dropdown);
+    }
+
+    
+  </script>
+</body>
+</html>
